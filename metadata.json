@@ -2,9 +2,11 @@
   "name": "puppetlabs-mailalias",
   "version": "0.1.0",
   "author": "Puppet Labs",
-  "summary": "",
+  "summary": "Creates an email alias in the local alias database.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/puppetlabs/puppetlabs-mailalias",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-mailalias/blob/master/README.md",
+  "issues_url": "https://tickets.puppetlabs.com/projects/MODULES",
   "dependencies": [
 
   ],
