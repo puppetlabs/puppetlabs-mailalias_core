@@ -6,6 +6,9 @@ Puppet::Type.type(:mailalias).provide(
   default_target: '/etc/aliases',
   filetype: :flat,
 ) do
+
+  desc 'The alias provider for mailalias.'
+
   text_line :comment, match: %r{^#}
   text_line :blank, match: %r{^\s*$}
 
