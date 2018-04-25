@@ -13,7 +13,7 @@ RSpec.context 'should modify an email alias' do
       on(agent, "echo '#{name}: foo,bar,baz' >> /etc/aliases")
 
       # (setup) verify the alias exists
-      on(agent, 'cat /etc/aliases')  do |res|
+      on(agent, 'cat /etc/aliases') do |res|
         assert_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias not in aliases file')
       end
     end
@@ -34,7 +34,7 @@ RSpec.context 'should modify an email alias' do
     end
 
     it 'verifies the updated alias is present' do
-      on(agent, 'cat /etc/aliases')  do |res|
+      on(agent, 'cat /etc/aliases') do |res|
         assert_match(%r{#{name}:.*foo,bar,baz,blarvitz}, res.stdout, 'updated mailalias not in aliases file')
       end
     end

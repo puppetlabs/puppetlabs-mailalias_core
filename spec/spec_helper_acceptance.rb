@@ -10,7 +10,7 @@ def beaker_opts
 end
 
 def non_windows_agents
-  agents.select { |agent| !agent['platform'].include?('windows') }
+  agents.reject { |agent| agent['platform'].include?('windows') }
 end
 
 RSpec.configure do |c|

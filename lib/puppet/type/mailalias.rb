@@ -2,13 +2,13 @@
 module Puppet
   Type.newtype(:mailalias) do
     desc <<-DESC
-Creates an email alias in the local alias database.
+  Creates an email alias in the local alias database.
 
-@example using mailalias to redirect mail for the ftp account to root's mailbox
-mailalias { 'ftp':
-  ensure => present,
-  recipient => 'root',
-}
+  @example using mailalias to redirect mail for the ftp account to root's mailbox
+  mailalias { 'ftp':
+    ensure => present,
+    recipient => 'root',
+  }
     DESC
 
     ensurable

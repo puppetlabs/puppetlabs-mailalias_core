@@ -12,7 +12,7 @@ RSpec.context 'should be able to find an exisitng email alias' do
       on(agent, "echo '#{name}: foo,bar,baz' >> /etc/aliases")
 
       # (setup) verify the alias exists
-      on(agent, 'cat /etc/aliases')  do |res|
+      on(agent, 'cat /etc/aliases') do |res|
         assert_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias not in aliases file')
       end
     end
