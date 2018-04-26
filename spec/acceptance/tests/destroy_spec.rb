@@ -4,7 +4,7 @@ RSpec.context 'should delete an email alias' do
   name = "pl#{rand(999_999).to_i}"
 
   before(:all) do
-    agents.each do |agent|
+    non_windows_agents.each do |agent|
       # (setup) backup alias file
       on(agent, 'cp /etc/aliases /tmp/aliases', acceptable_exit_codes: [0, 1])
 
@@ -19,13 +19,13 @@ RSpec.context 'should delete an email alias' do
   end
 
   after(:all) do
-    agents.each do |agent|
+    non_windows_agents.each do |agent|
       # (teardown) restore the alias file
       on(agent, 'mv /tmp/aliases /etc/aliases', acceptable_exit_codes: [0, 1])
     end
   end
 
-  agents.each do |agent|
+  non_windows_agents.each do |agent|
     it 'deletes the aliases database with puppet' do
       args = ['ensure=absent',
               'recipient="foo,bar,baz"']
