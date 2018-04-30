@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Added
 - Gem dependency on puppet-blacksmith, which is required to ship to the module
   to forge.puppet.com
+### Changed
+- The Gemfile and spec/spec_helper.rb are managed by pdk. Any additional content
+  for these files should be defined in .syn.yml and spec/spec_helper_local.rb
+  respectively
 
 ## [1.0.1] - 2018-04-30
 ### Summary
