@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.0.2] - 2018-04-30
+### Added
+- Gem dependency on puppet-blacksmith, which is required to ship to the module
+  to forge.puppet.com
+
 ## [1.0.1] - 2018-04-30
 ### Summary
 This is an empty release to test the release pipeline
@@ -12,5 +17,6 @@ This is an empty release to test the release pipeline
 ### Summary
 This is the initial release of the extracted mailalias module
 
+[1.0.2]: https://github.com/puppetlabs/puppetlabs-mailalias_core/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/puppetlabs/puppetlabs-mailalias_core/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/puppetlabs/puppetlabs-mailalias_core/releases/tag/1.0.0
