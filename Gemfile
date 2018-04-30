@@ -33,6 +33,9 @@ group :development do
   gem "puppet-module-win-default-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-module-win-dev-r#{minor_version}",       require: false, platforms: [:mswin, :mingw, :x64_mingw]
 
+  # Needed to push to the forge
+  gem "puppet-blacksmith", '~> 3.4',                   require: false
+
   # Puppet Strings for documentation purposes
   gem 'puppet-strings'
   gem 'rake'
