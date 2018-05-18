@@ -1,11 +1,10 @@
 require 'spec_helper_acceptance'
 
-RSpec.context 'should modify an email alias' do
+RSpec.context 'Mailalias: should modify an email alias' do
   name = "pl#{rand(999_999).to_i}"
 
   before(:all) do
     non_windows_agents.each do |agent|
-      #------- SETUP -------#
       # (setup) backup alias file
       on(agent, 'cp /etc/aliases /tmp/aliases', acceptable_exit_codes: [0, 1])
 
@@ -27,13 +26,13 @@ RSpec.context 'should modify an email alias' do
   end
 
   non_windows_agents.each do |agent|
-    it 'modifies the aliases database with puppet' do
+    it 'modifies an existing mailalias resource' do
+      # modify the aliases database with puppet
       args = ['ensure=present',
               'recipient="foo,bar,baz,blarvitz"']
       on(agent, puppet_resource('mailalias', name, args))
-    end
 
-    it 'verifies the updated alias is present' do
+      # verify the updated alias is present
       on(agent, 'cat /etc/aliases') do |res|
         assert_match(%r{#{name}:.*foo,bar,baz,blarvitz}, res.stdout, 'updated mailalias not in aliases file')
       end
