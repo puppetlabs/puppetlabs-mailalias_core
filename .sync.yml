@@ -26,3 +26,6 @@ Gemfile:
 Rakefile:
   requires:
     - puppet-lint/tasks/puppet-lint
+
+spec/spec_helper.rb:
+  mock_with: ':rspec'
