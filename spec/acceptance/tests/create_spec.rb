@@ -16,13 +16,13 @@ RSpec.context 'Mailalias: should create an email alias' do
   end
 
   non_windows_agents.each do |agent|
-    it 'creates a mailalias with puppet' do
+    it 'creates a mailalias resource' do
+      # create a mailalias with puppet
       args = ['ensure=present',
               'recipient="foo,bar,baz"']
       on(agent, puppet_resource('mailalias', name, args))
-    end
 
-    it 'verifies the alias exists' do
+      # verify the alias exists
       on(agent, 'cat /etc/aliases') do |res|
         assert_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias not in aliases file')
       end
