@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-RSpec.context 'should delete an email alias' do
+RSpec.context 'Mailalias: should delete an email alias' do
   name = "pl#{rand(999_999).to_i}"
 
   before(:all) do
@@ -26,13 +26,13 @@ RSpec.context 'should delete an email alias' do
   end
 
   non_windows_agents.each do |agent|
-    it 'deletes the aliases database with puppet' do
+    it 'deletes a mailalias resource' do
+      # delete the aliases database with puppet
       args = ['ensure=absent',
               'recipient="foo,bar,baz"']
       on(agent, puppet_resource('mailalias', name, args))
-    end
 
-    it 'verifies the alias is absent' do
+      # verify the alias is absent
       on(agent, 'cat /etc/aliases') do |res|
         assert_no_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias was not removed from aliases file')
       end
