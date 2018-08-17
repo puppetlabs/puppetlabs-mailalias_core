@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-mailalias_core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Puppet Labs",
   "summary": "Creates an email alias in the local alias database.",
   "license": "Apache-2.0",
@@ -75,7 +75,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 7.0.0"
+      "version_requirement": ">= 6.0.0 < 7.0.0"
     }
   ],
   "pdk-version": "1.5.0",
