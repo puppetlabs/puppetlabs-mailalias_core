@@ -25,7 +25,7 @@ This example will redirect mail for the ftp account to root's mailbox.
 ## Usage
 The mailalias module is used to manage entries in `/etc/aliases`, which creates an email alias in the local alias database.
 
-For details on usage, please see [the puppet docs](https://puppet.com/docs/puppet/latest/types/mailalias.html).
+For details on usage, please see [`REFERENCE.md`](REFERENCE.md) for the reference documentation.
 
 #### file
 A file containing the alias’s contents. The file and the recipient entries are mutually exclusive.
