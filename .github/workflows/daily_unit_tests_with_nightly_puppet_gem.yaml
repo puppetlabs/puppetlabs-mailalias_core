@@ -57,50 +57,13 @@ jobs:
       - name: Run unit tests
         run: bundle exec rake parallel_spec
 
-      - name: Send Slack notification
-        if: always()
-        shell: bash
-        env:
-          success: '#43c78a'
-          failure: '#ed5c5c'
-          cancelled: '#343434'
-        run: |
-          curl -X POST --data-urlencode \
-            "payload=\
-            {\
-              'channel': '#${{ secrets.SLACK_CHANNEL }}', \
-              'attachments': \
-              [\
-                {\
-                  'author_name': '${{ github.actor }}', \
-                  'author_link': 'http://github.com/${{ github.actor }}', \
-                  'author_icon': 'http://github.com/${{ github.actor }}.png?size=32', \
-                  'color': '${{ env[job.status] }}', \
-                  'fields': \
-                  [\
-                    {\
-                      'title': 'Git reference', \
-                      'value': '${{ github.ref }}', \
-                      'short': true, \
-                    },\
-                    {\
-                      'title': 'Event', \
-                      'value': '${{ github.event_name }}', \
-                      'short': true, \
-                    },\
-                    {\
-                      'title': 'Workflow', \
-                      'value': '<http://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.workflow }}>', \
-                    },\
-                    {\
-                      'title': ':ci_${{ job.status}}: *${{ github.repository }}*', \
-                      'value': 'The *${{ matrix.os_type }} / Puppet${{ matrix.puppet_version }} gem / Ruby ${{ matrix.ruby }}* run finished with status *${{ job.status }}*.', \
-                      'short': false, \
-                    },\
-                  ],\
-                  'footer': ':githublogo: Commit SHA: <http://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>', \
-                },\
-              ],\
-            }\
-            " \
-            ${{ secrets.SLACK_WEBHOOK_URL }}
+  notify-via-slack:
+    name: Notify workflow conclusion via Slack
+    if: ${{ always() }}
+    needs: daily_unit_tests_with_nightly_puppet_gem
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: luchihoratiu/notify-via-slack@main
+        with:
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
