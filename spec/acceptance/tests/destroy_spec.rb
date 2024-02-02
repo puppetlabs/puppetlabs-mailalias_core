@@ -34,7 +34,7 @@ RSpec.context 'Mailalias: should delete an email alias' do
 
       # verify the alias is absent
       on(agent, 'cat /etc/aliases') do |res|
-        assert_no_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias was not removed from aliases file')
+        refute_match(%r{#{name}:.*foo,bar,baz}, res.stdout, 'mailalias was not removed from aliases file')
       end
     end
   end
