@@ -27,8 +27,8 @@ RSpec.context 'should be able to find an exisitng email alias' do
 
   non_windows_agents.each do |agent|
     it 'queries for the mail alias with puppet' do
-      on(agent, puppet_resource('mailalias', name)) do
-        fail_test "didn't find the scheduled_task #{name}" unless stdout.include? 'present'
+      on(agent, puppet_resource('mailalias', name)) do |res|
+        fail_test "didn't find the scheduled_task #{name}" unless res.stdout.include? 'present'
       end
     end
   end
