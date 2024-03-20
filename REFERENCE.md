@@ -58,16 +58,16 @@ those providers that write to disk.
 
 The following parameters are available in the `mailalias` type.
 
-* [`name`](#name)
-* [`provider`](#provider)
+* [`name`](#-mailalias--name)
+* [`provider`](#-mailalias--provider)
 
-##### <a name="name"></a>`name`
+##### <a name="-mailalias--name"></a>`name`
 
 namevar
 
 The alias name.
 
-##### <a name="provider"></a>`provider`
+##### <a name="-mailalias--provider"></a>`provider`
 
 The specific backend to use for this `mailalias` resource. You will seldom need to specify this --- Puppet will usually
 discover the appropriate provider for your platform.
